@@ -85,7 +85,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "localhost"
+  - "staging.rocketjourney.com"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -329,11 +329,11 @@ auth_method: internal
 ##
 ## PostgreSQL server:
 ##
-## odbc_type: pgsql
-## odbc_server: "server"
-## odbc_database: "database"
-## odbc_username: "username"
-## odbc_password: "password"
+odbc_type: pgsql
+odbc_server: "10.132.74.161"
+odbc_database: "xmpp_staging"
+odbc_username: "pgsql"
+odbc_password: "kNV9VjAkDsnZ"
 ##
 ## If you want to specify the port:
 ## odbc_port: 1234
@@ -387,10 +387,9 @@ acl:
   ## The 'admin' ACL grants administrative privileges to XMPP accounts.
   ## You can put here as many accounts as you want.
   ##
-  ## admin:
-  ##   user:
-  ##     - "aleksey": "localhost"
-  ##     - "ermine": "example.org"
+  admin:
+    user:
+      - "admin": "staging.rocketjourney.com"      
   ##
   ## Blocked users
   ##
