@@ -85,7 +85,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "staging.rocketjourney.com"
+  - "localhost"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -389,7 +389,7 @@ acl:
   ##
   admin:
     user:
-      - "admin": "staging.rocketjourney.com"      
+      - "admin": "localhost"      
   ##
   ## Blocked users
   ##
