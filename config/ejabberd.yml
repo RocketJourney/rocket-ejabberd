@@ -388,8 +388,7 @@ acl:
   ## You can put here as many accounts as you want.
   ##
   admin:
-    user:    
-      - "admin": "159.203.85.131"
+    user: "admin"
   ##
   ## Blocked users
   ##
