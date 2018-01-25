@@ -329,14 +329,14 @@ auth_method: internal
 ##
 ## PostgreSQL server:
 ##
-odbc_type: pgsql
-odbc_server: "10.132.74.161"
-odbc_database: "xmpp_staging"
-odbc_username: "pgsql"
-odbc_password: "kNV9VjAkDsnZ"
+sql_type: pgsql
+sql_server: "10.132.74.161"
+sql_database: "xmpp_staging"
+sql_username: "pgsql"
+sql_password: "kNV9VjAkDsnZ"
 ##
 ## If you want to specify the port:
-## odbc_port: 1234
+sql_port: 5432
 ##
 ## If you use PostgreSQL, have a large database, and need a
 ## faster but inexact replacement for "select count(*) from users"
@@ -657,7 +657,6 @@ modules:
 ## uninstallation of public/private contributed modules
 ## (enabled by default)
 ##
-
 
 allow_contrib_modules: true
 
