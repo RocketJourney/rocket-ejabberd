@@ -330,10 +330,10 @@ auth_method: internal
 ## PostgreSQL server:
 ##
 sql_type: pgsql
-sql_server: "10.132.74.161"
-sql_database: "xmpp_staging"
-sql_username: "pgsql"
-sql_password: "kNV9VjAkDsnZ"
+sql_server: "localhost"
+sql_database: "xmpp_dev"
+sql_username: "postgres"
+sql_password: "postgres"
 ##
 ## If you want to specify the port:
 sql_port: 5432
