@@ -85,7 +85,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "staging.rocketjourney.com"
+  - "localhost"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -223,7 +223,9 @@ listen:
 ## If you want to use a different method,
 ## comment this line and enable the correct ones.
 ##
-auth_method: internal
+default_db: sql
+auth_method: sql
+
 
 ##
 ## Store the plain passwords or hashed for SCRAM:
@@ -330,7 +332,7 @@ auth_method: internal
 ## PostgreSQL server:
 ##
 sql_type: pgsql
-sql_server: "localhost"
+sql_server: "127.0.0.1"
 sql_database: "xmpp_dev"
 sql_username: "postgres"
 sql_password: "postgres"
@@ -389,7 +391,7 @@ acl:
   ##
   admin:
     user:
-      - "admin": "staging.rocketjourney.com"      
+      - "admin": "localhost"      
   ##
   ## Blocked users
   ##
