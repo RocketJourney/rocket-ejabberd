@@ -223,8 +223,8 @@ listen:
 ## If you want to use a different method,
 ## comment this line and enable the correct ones.
 ##
-auth_method: sql
 default_db: sql
+auth_method: sql
 ##
 ## Store the plain passwords or hashed for SCRAM:
 ## auth_password_format: plain
