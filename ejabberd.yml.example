@@ -84,8 +84,7 @@ log_rate_limit: 100
 ##   - "example.com"
 ##   - "example.org"
 ##
-hosts:
-  - "localhost"
+hosts:  
   - "159.203.85.131"
 
 ##
@@ -389,8 +388,7 @@ acl:
   ## You can put here as many accounts as you want.
   ##
   admin:
-    user:
-      - "admin": "localhost"
+    user:    
       - "admin": "159.203.85.131"
   ##
   ## Blocked users
