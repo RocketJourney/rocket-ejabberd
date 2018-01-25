@@ -6,5 +6,5 @@ config :ejabberd,
   log_path: 'log/ejabberd.log'
 
 # Customize Mnesia directory:
-config :mnesia,
-  dir: 'database/'
+# config :mnesia,
+  # dir: 'database/'
