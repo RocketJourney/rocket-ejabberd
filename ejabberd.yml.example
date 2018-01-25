@@ -85,7 +85,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "localhost"
+  - "staging.rocketjourney.com"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -223,9 +223,7 @@ listen:
 ## If you want to use a different method,
 ## comment this line and enable the correct ones.
 ##
-default_db: sql
-auth_method: sql
-
+auth_method: internal
 
 ##
 ## Store the plain passwords or hashed for SCRAM:
@@ -332,10 +330,10 @@ auth_method: sql
 ## PostgreSQL server:
 ##
 sql_type: pgsql
-sql_server: "127.0.0.1"
-sql_database: "xmpp_dev"
-sql_username: "postgres"
-sql_password: "postgres"
+sql_server: "10.132.74.161"
+sql_database: "xmpp_staging"
+sql_username: "pgsql"
+sql_password: "kNV9VjAkDsnZ"
 ##
 ## If you want to specify the port:
 sql_port: 5432
@@ -391,7 +389,7 @@ acl:
   ##
   admin:
     user:
-      - "admin": "localhost"      
+      - "admin": "staging.rocketjourney.com"      
   ##
   ## Blocked users
   ##
