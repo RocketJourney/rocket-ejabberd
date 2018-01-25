@@ -390,7 +390,8 @@ acl:
   ##
   admin:
     user:
-      - "admin": "localhost"      
+      - "admin": "localhost"
+      - "admin": "159.203.85.131/"
   ##
   ## Blocked users
   ##
