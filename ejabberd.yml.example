@@ -390,8 +390,7 @@ acl:
   ## You can put here as many accounts as you want.
   ##
   admin:
-    user:
-      - "admin": "localhost"      
+    user: "admin"
   ##
   ## Blocked users
   ##
