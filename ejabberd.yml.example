@@ -36,7 +36,7 @@
 ## 4: Info
 ## 5: Debug
 ##
-loglevel: 4
+loglevel: 5
 
 ##
 ## rotation: Describe how to rotate logs. Either size and/or date can trigger
@@ -85,7 +85,7 @@ log_rate_limit: 100
 ##   - "example.org"
 ##
 hosts:
-  - "staging.rocketjourney.com"
+  - "localhost"
 
 ##
 ## route_subdomains: Delegate subdomains to other XMPP servers.
@@ -223,8 +223,10 @@ listen:
 ## If you want to use a different method,
 ## comment this line and enable the correct ones.
 ##
-auth_method: sql
 default_db: sql
+auth_method: sql
+
+
 ##
 ## Store the plain passwords or hashed for SCRAM:
 ## auth_password_format: plain
@@ -330,10 +332,10 @@ default_db: sql
 ## PostgreSQL server:
 ##
 sql_type: pgsql
-sql_server: "10.132.74.161"
-sql_database: "xmpp_staging"
-sql_username: "pgsql"
-sql_password: "kNV9VjAkDsnZ"
+sql_server: "127.0.0.1"
+sql_database: "xmpp_dev"
+sql_username: "postgres"
+sql_password: "postgres"
 ##
 ## If you want to specify the port:
 sql_port: 5432
@@ -389,7 +391,7 @@ acl:
   ##
   admin:
     user:
-      - "admin": "staging.rocketjourney.com"      
+      - "admin": "localhost"      
   ##
   ## Blocked users
   ##
