@@ -570,6 +570,9 @@ modules:
   ##   docroot: "/var/www"
   ##   accesslog: "/var/log/ejabberd/access.log"
   mod_last: {}
+  mod_mam:
+    db_type: sql
+    default: always
   mod_muc:
     ## host: "conference.@HOST@"
     access: muc
