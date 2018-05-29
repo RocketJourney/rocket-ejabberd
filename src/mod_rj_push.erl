@@ -41,8 +41,8 @@ user_send_packet({#message{body = Body, type = Type} = Packet, C2SState}) ->
             % get subscribers of muc room
             Subscribers = begin
                 SubscribersRoom = mod_muc_admin:get_subscribers(To#jid.luser, To#jid.lserver),
-                lists:map(fun(BinJID) ->
-                    JID = jid:make(BinJID),
+                lists:map(fun(SJID) ->
+                    JID = jid:from_string(SJID),
                     JID#jid.luser
                 end, SubscribersRoom)
             end,
