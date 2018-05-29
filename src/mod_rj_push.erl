@@ -71,10 +71,12 @@ push_call(Mod, Fun, From, To, Text, Subscribers)             ->
     ok.
 
 mod_opt_type(push_mod) ->
-    fun(B) when is_list(B) -> list_to_atom(B);
+    fun(B) when is_list(B)   -> list_to_atom(B);
+       (B) when is_binary(B) -> list_to_atom(binary_to_list(B));
        (B) -> B end;
 mod_opt_type(push_fun) ->
-    fun(B) when is_list(B) -> list_to_atom(B);
+    fun(B) when is_list(B)   -> list_to_atom(B);
+       (B) when is_binary(B) -> list_to_atom(binary_to_list(B));
        (B) -> B end;
 mod_opt_type(_) ->
     [push_mod, push_fun].
