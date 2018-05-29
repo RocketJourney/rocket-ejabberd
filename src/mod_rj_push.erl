@@ -35,9 +35,9 @@ user_send_packet({#message{body = Body, type = Type} = Packet, C2SState}) ->
     From = xmpp:get_from(Packet),
     To = xmpp:get_to(Packet),
     ok = case Type of
-        <<"chat">>      ->
+        chat      ->
             ok; % ignore for now, RJ only uses groupchat
-        <<"groupchat">> ->
+        groupchat ->
             % get subscribers of muc room
             Subscribers = begin
                 SubscribersRoom = mod_muc_admin:get_subscribers(To#jid.luser, To#jid.lserver),
@@ -46,7 +46,8 @@ user_send_packet({#message{body = Body, type = Type} = Packet, C2SState}) ->
                     JID#jid.luser
                 end, SubscribersRoom)
             end,
-            push_call(From#jid.lserver, From#jid.luser, To#jid.luser, Body, Subscribers);     
+            Text = xmpp:get_text(Body),
+            push_call(From#jid.lserver, From#jid.luser, To#jid.luser, Text, Subscribers);     
         _               ->
             ok % ignore other type of message
     end,
