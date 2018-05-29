@@ -38,12 +38,15 @@ user_send_packet({#message{body = Body, type = Type} = Packet, C2SState}) ->
         <<"chat">>      ->
             ok; % ignore for now, RJ only uses groupchat
         <<"groupchat">> ->
-            % get affiliations of muc room
-            Affiliations = begin
-                AffiliationsRoom = mod_muc_admin:get_room_affiliations(To#jid.luser, To#jid.lserver),
-                lists:map(fun({User, _, _, _}) -> User end, AffiliationsRoom)
+            % get subscribers of muc room
+            Subscribers = begin
+                SubscribersRoom = mod_muc_admin:get_subscribers(To#jid.luser, To#jid.lserver),
+                lists:map(fun(BinJID) ->
+                    JID = jid:make(BinJID),
+                    JID#jid.luser
+                end, SubscribersRoom)
             end,
-            push_call(From#jid.lserver, From#jid.luser, To#jid.luser, Body, Affiliations);     
+            push_call(From#jid.lserver, From#jid.luser, To#jid.luser, Body, Subscribers);     
         _               ->
             ok % ignore other type of message
     end,
@@ -51,19 +54,19 @@ user_send_packet({#message{body = Body, type = Type} = Packet, C2SState}) ->
 user_send_packet(Acc) ->
     Acc.
 
-push_call(LServer, From, To, Text, Affiliations) ->
+push_call(LServer, From, To, Text, Subscribers) ->
     Mod = gen_mod:get_module_opt(LServer, ?MODULE, push_mod, unknown),
     Fun = gen_mod:get_module_opt(LServer, ?MODULE, push_fun, unknown),
-    push_call(Mod, Fun, From, To, Text, Affiliations).
+    push_call(Mod, Fun, From, To, Text, Subscribers).
 
-push_call(unknown, unknown, _From, _To, _Text, _Affiliations) ->
+push_call(unknown, unknown, _From, _To, _Text, _Subscribers) ->
     ?DEBUG("Not set either push mod or push fun in opts", []);
-push_call(unknown, _Fun, _From, _To, _Text, _Affiliations)    ->
+push_call(unknown, _Fun, _From, _To, _Text, _Subscribers)    ->
     ?DEBUG("Not set push mod in opts", []);
-push_call(_Mod, unknown, _From, _To, _Text, _Affiliations)    ->
+push_call(_Mod, unknown, _From, _To, _Text, _Subscribers)    ->
     ?DEBUG("Not set push fun in opts", []);
-push_call(Mod, Fun, From, To, Text, Affiliations)             ->
-    Res = Mod:Fun(From, To, Text, Affiliations),
+push_call(Mod, Fun, From, To, Text, Subscribers)             ->
+    Res = Mod:Fun(From, To, Text, Subscribers),
     ?DEBUG("Sending push call was ~p", [Res]),
     ok.
 
