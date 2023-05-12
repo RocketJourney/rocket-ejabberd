@@ -39,7 +39,7 @@ init(Opts) ->
 
 %% @private
 handle_event({log, LagerMsg}, State) ->
-    #{mode := Mode, truncate := Truncate, level := MinLevel, utc_log := UTCLog} =  'Elixir.Logger.Config':'__data__'(),
+    #{mode := Mode, truncate := Truncate, level := MinLevel, utc_log := UTCLog} =  'Elixir.Logger.Config':'translation_data'(),
     MsgLevel = severity_to_level(lager_msg:severity(LagerMsg)),
     case {lager_util:is_loggable(LagerMsg, lager_util:level_to_num(State#state.level), ?MODULE),
           'Elixir.Logger':compare_levels(MsgLevel, MinLevel)} of
